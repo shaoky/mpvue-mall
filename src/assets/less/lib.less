@@ -1,0 +1,112 @@
+/* 覆盖weui样式 */
+.weui-loadmore{width: 100%!important;}
+
+/* 自定义样式 */
+
+// iphonex
+.iphonex{bottom: 68rpx!important; margin-top: 68rpx;
+    // &::after{content: ''; position: fixed; bottom: 0!important; height: 68rpx!important; width: 100%; background: #fff;}
+}
+.iphonex::after{content: ''; position: fixed; bottom: 0!important; height: 68rpx!important; width: 100%; background: #fff;}
+
+.iphonexFixed{padding-bottom: 68rpx!important;}
+
+
+// 提交按钮
+.v-submit{width: 700rpx; margin: 0 auto; height: 88rpx; line-height: 88rpx; text-align: center; color: #fff; font-size: 30rpx; border-radius: 4px; background: #f70044;}
+
+// 普通按钮
+.v-button{ margin: 0 auto; padding: 0 50rpx; height: 64rpx; line-height: 64rpx; text-align: center; color: #fff; font-size: 30rpx; border-radius: 4px; background: #f70044; display: inline-block;}
+
+// 提交按钮-底部
+.v-submit-footer{position: fixed; left: 0; bottom: 0; right: 0; height: 80rpx; line-height: 80rpx; text-align: center; color: #fff; font-size: 32rpx; background: #f70044;}
+
+// 表单
+.v-cell{height: 90rpx; border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; background-color: #fff;
+  .icon-more{color: #999; font-size: 40rpx;}
+}
+.v-cell-height{border-bottom: 1px solid #f5f5f5; display: flex; align-items: center; background-color: #fff;}
+.v-cell__title{flex: 1; margin-left: 20rpx; font-size: 28rpx;}
+.v-cell__sub{font-size: 28rpx;}
+.v-cell__bd{flex: 1; background: #fff;}
+.v-input{font-size: 30rpx; height: 100%; margin-left: 20rpx;}
+
+// tab切换
+.v-tabs{position: relative; white-space: nowrap; height: 88rpx; line-height: 88rpx; background: #fff; border-bottom: 1px solid #e5e5e5;
+    .item{display: inline-block; text-align: center; font-size: 28rpx;
+        &.active{color: #f70044; width: 100rpx; position: relative;
+            &::after{
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: 0 auto;
+                height: 5rpx;
+                width: 150rpx;
+                background: #f70044;
+                display: block;
+                content: "";
+            }
+        }
+    }
+}
+
+/*弹出框，右边，下面*/
+.v-popup{
+    position: fixed;
+    background: #fff;
+    top: 50%;
+    left: 50%;
+    z-index: 2001;
+    transform: translate3d(-50%, -50%, 0);
+    backface-visibility: hidden;
+    transition: .3s ease-out;
+    &.show{transform: translate3d(0, 0, 0);}
+}
+.v-popup-right{
+    top: 50%;
+    right: 0;
+    bottom: auto;
+    left: auto;
+    height: 100%;
+    transform: translate3d(0, -50%, 0);
+    background: #fff;
+}
+.v-popup-bottom{
+  top: auto;
+  right: 0;
+  bottom: 0;
+  left: auto;
+  width: 100%;
+  height: auto;
+  transform: translate3d(0, 105%, 0);
+  background: #fff;
+  z-index: 9999;
+}
+
+/*遮罩层*/
+.v-modal{
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 2000;
+    width: 100%;
+    height: 100%;
+    opacity: .5;
+    background: #000;
+}
+// 提交按钮-底部
+.v-submit-footer{position: fixed; left: 0; bottom: 0; right: 0; height: 80rpx; line-height: 80rpx; text-align: center; color: #fff; font-size: 32rpx; background: #f70044;}
+
+//地址
+.v-address{height:152rpx;padding:24rpx 5rpx 24rpx 20rpx;display: flex;background:#fff;align-items:center;
+  .icon-dizhi{margin-right:20rpx; color: #666;}
+  .container{flex:1;
+      .contact{display:flex;font-size:28rpx;color:#333;
+          span:first-child{flex:1;}
+          .tel{margin-right: 82rpx;}
+      }
+      .info{font-size:28rpx;color:#333; margin-top: 10rpx;}
+  }
+  .icon-more{color: #999;}
+}
