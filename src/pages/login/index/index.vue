@@ -124,6 +124,7 @@ export default {
                     longitude: location.longitude
                 }
                 const res = await wxLogin(data)
+                console.log(res)
                 // if (res.code === 40100) {
                 //     wx.showToast({
                 //         title: res.message,
@@ -133,7 +134,7 @@ export default {
                 //     return
                 // }
                 if (res.code === 200) {
-                    wx.setStorageSync('user', res.data)
+                    wx.setStorageSync('user', res.data.userInfo)
                     wx.switchTab({
                         url: '/pages/index/main'
                     })

@@ -78,6 +78,7 @@ export default {
     },
 
     onShow () {
+        console.log(1)
         // this.hotlist = []
         this.search = {
             // sid: 3,

@@ -1,19 +1,19 @@
 <template>
     <div class="container">
         <div class="header">
-            <div class="user" v-if="user.nickname">
+            <div class="user" v-if="user.userName">
                 <div class="picture">
                     <img :src="user.userPhoto" class="icon">
                 </div>
                 <div class="user-info">
-                    <div class="user-name" v-if="user.nickname">{{user.nickname}}</div>
+                    <div class="user-name" v-if="user.userName">{{user.userName}}</div>
                     <!-- <div class="edit-info" @click="goInformation">编辑信息 <i class="iconfont icon-more"></i></div> -->
                 </div>
                 <div class="message">
                     <!-- <img class="icon" src="/static/images/user/index/message.png"> -->
                 </div>
             </div>
-            <div class="user" v-if="!user.nickname">
+            <div class="user" v-if="!user.userName">
                 <div class="picture">
                     <img src="/static/images/common/picture.jpg" class="icon">
                 </div>

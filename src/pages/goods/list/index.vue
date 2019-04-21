@@ -92,7 +92,7 @@
 </template>
 
 <script>
-import { getGoodsAll, getGoodsCategory } from '@/api/getData'
+import { getGoodsList, getGoodsCategory } from '@/api/getData'
 import shopList from '@/components/shop-list'
 
 export default {
@@ -121,20 +121,20 @@ export default {
 
     mounted () {
         this.searchDefault = {...this.search}
-        this.getGoodsAll()
-        this.getGoodsCategory()
+        this.getGoodsList()
+        // this.getGoodsCategory()
     },
 
     methods: {
-        async getGoodsAll () {
-            let res = await getGoodsAll(this.search)
+        async getGoodsList () {
+            let res = await getGoodsList(this.search)
             // this.data = res.data
             if (res.code === 200) {
-                if (res.data.length > 0) {
-                    res.data.forEach(item => {
+                if (res.data.list.length > 0) {
+                    res.data.list.forEach(item => {
                         this.goodslist.push(item)
                     })
-                    if (res.data.length < this.search.size) {
+                    if (res.data.list.length < this.search.size) {
                         this.isNext = false
                     }
                     console.log(this.goodslist)
@@ -154,7 +154,7 @@ export default {
         onType (name) {
             this.search.goodsclassname = name
             this.goodslist = []
-            this.getGoodsAll()
+            this.getGoodsList()
             this.popupVisible = false
         },
 
@@ -193,13 +193,13 @@ export default {
 
             // 标题搜索
             if (index === 4) {
-                this.getGoodsAll()
+                this.getGoodsList()
                 return
             }
 
             this.screeningCurrent = index
 
-            this.getGoodsAll()
+            this.getGoodsList()
         },
         onPopup () {
             this.popupVisible = true
@@ -234,7 +234,7 @@ export default {
         // this.loading = true
         setTimeout(() => {
             this.search.page++
-            this.getGoodsAll()
+            this.getGoodsList()
         }, 1000)
     },
 

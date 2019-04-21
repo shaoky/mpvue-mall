@@ -1,37 +1,37 @@
 import request from '../config/request'
 
-export const wxLogin = (data) => request('wx/mini/login', {data})
+export const wxLogin = (data) => request('wx/register', {data})
 /**
  * 首页
  */
-export const getIndexData = (data) => request('app/index', {data})
+export const getIndexData = (data) => request('h5/index/data', {data})
 
 /**
  * 商品
  */
-export const getGoodsList = (data) => request('app/goods/list', {data})
-export const getGoodsInfo = (data) => request('app/goods/info', {data})
-export const getGoodsCategory = (data) => request('app/goodsCategory/list', {data})
-export const getGoodsAll = (data) => request('app/goodsAll/list', {data})
+export const getGoodsList = (data) => request('h5/goods/list', {data})
+export const getGoodsInfo = (data) => request('h5/goods/info', {data})
+export const getGoodsCategory = (data) => request('h5/goodsCategory/list', {data})
+export const getGoodsAll = (data) => request('h5/goodsAll/list', {data})
 
 /**
  * 地址
  */
-export const addAddress = (data) => request('app/address/add', {data})
-export const getAddressList = (data) => request('app/address/list', {data})
-export const delAddress = (data) => request('app/address/delete', {data})
-export const getAddressDefault = (data) => request('app/address/default', {data})
-export const setAddressDefault = (data) => request('app/address/setDefault', {data})
+export const addAddress = (data) => request('h5/user/address/add', {data})
+export const getAddressList = (data) => request('h5/user/address/list', {data})
+export const delAddress = (data) => request('h5/user/address/delete', {data})
+export const getAddressDefault = (data) => request('h5/user/address/default', {data})
+export const setAddressDefault = (data) => request('h5/user/address/setDefault', {data})
 
 /**
  * 购物车
  */
-export const getCartList = (data) => request('app/cart/list', {data})
-export const addCart = (data) => request('app/cart/add', {data})
-export const delCart = (data) => request('app/cart/delete', {data})
-export const editCart = (data) => request('app/cart/update', {data})
-export const editSelectedCart = (data) => request('app/cart/selected/update', {data})
-export const editSelectedAllCart = (data) => request('app/cart/selectedAll/update', {data})
+export const getCartList = (data) => request('h5/cart/list', {data})
+export const addCart = (data) => request('h5/cart/add', {data})
+export const delCart = (data) => request('h5/cart/delete', {data})
+export const editCart = (data) => request('h5/cart/update', {data})
+export const editSelectedCart = (data) => request('h5/cart/selected/update', {data})
+export const editSelectedAllCart = (data) => request('h5/cart/selectedAll/update', {data})
 
 /**
  * 订单
@@ -44,8 +44,8 @@ export const orderStatusSet = (data) => request('app/user/order/status/update', 
 /**
  * 订单列表
  */
-export const getOrderList = (data) => request('app/user/order/list', {data})
-export const getOrderInfo = (data) => request('app/user/order/info', {data})
+export const getOrderList = (data) => request('h5/order/list', {data})
+export const getOrderInfo = (data) => request('h5/order/info', {data})
 
 /**
  * 获取code

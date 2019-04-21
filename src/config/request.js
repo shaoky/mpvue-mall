@@ -22,15 +22,15 @@ export default async (url = '', data = {}, method = 'POST') => {
         // }
 
         // console.log(JSON.stringify(data.data))
-        // url = 'http://192.168.3.58:82/' + url
-        url = 'http://192.168.3.58:3000/' + url
+        url = 'http://api.mall.shaoky.com/' + url
         wx.request({
             url,
             data: data.data,
             method,
             header: {
                 'content-type': 'application/json',
-                'Authorization': token || ''
+                'Authorization': token || '',
+                'from': 4
             },
             // header: {'content-type': 'application/x-www-form-urlencoded'},
             success: res => {

@@ -1,11 +1,11 @@
 <template>
-    <div class="container">
+    <div class="container" v-if="data.loading">
         <!-- <div :class="isIpx?'iphonex':''"></div> -->
         <div class="banner">
             <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" class="banner" :current="data.swiperCurrent" @change="swiperChange">
-                <div v-for="item in getData.info.goodsImageBanner" :key="item.id">
+                <div v-for="item in getData.info.goodsBannerList" :key="item.id">
                     <swiper-item>
-                        <img :src="item" class="slide-image" width="100%" height="150" @click='gotoLikeInfo'/>
+                        <img :src="item.imageUrl" class="slide-image" width="100%" height="150" @click='gotoLikeInfo'/>
                     </swiper-item>
                 </div>
             </swiper>
@@ -15,7 +15,7 @@
         </div>
         <div class="goods-info">
             <div class="title font-limit-2">{{getData.info.goodsName}}</div>
-            <div class="price">批发价:￥{{getData.info.shopPrice}}</div>
+            <div class="price">商品价:￥{{getData.info.shopPrice}}</div>
             <div class="marketPrice">
                 <div class="left del">市场价:￥{{getData.info.marketPrice}}</div>
                 <div class="sales">销量: {{getData.info.saleCount}}</div>
@@ -52,8 +52,8 @@
             </scroll-view>
             <div class="tabs-content">
                 <div class="item" v-if="data.tabsCurrent === 0">
-                    <div class="image" v-for="item in getData.info.goodsImageDetail" :key="item.id">
-                        <img :src="item" mode="widthFix">
+                    <div class="image" v-for="item in getData.info.goodsDetailList" :key="item.id">
+                        <img :src="item.imageUrl" mode="widthFix">
                     </div>
                 </div>
                 <div class="item text" v-if="data.tabsCurrent === 1">
@@ -94,7 +94,7 @@
                 </div>
             </div>
             <div class="goods-scroll">
-                <div class="goods-spec">
+                <!-- <div class="goods-spec">
                     <div class="attr" v-for="(item, index1) in getData.info.goodsSpec.goodsAttrList" :key="index1">
                         {{item.name}}
                         <ul class="value">
@@ -106,7 +106,7 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div> -->
                 <div class="goods-num">
                     <div class="text">购买数量</div>
                     <div class="input">
@@ -142,14 +142,20 @@ export default {
             isAddCart: false, // 是否加到购物车里
 
             getData: {
-                info: {
-                    goodsSpec: {
-                        goodsAttrList: {}
-                    }
-                }
+                info: {},
+                // info: {
+                //     goodsSpec: {
+                //         goodsAttrList: {}
+                //     }
+                // }
             },
             shopAttrList: [],
+            goods: {
+                info: {}
+            },
             data: {
+                loading: false,
+                goods: {},
                 userInfo: {},
                 swiperCurrent: 0,
                 tabsCurrent: 0,
@@ -189,10 +195,11 @@ export default {
                 let res = await getGoodsInfo(this.search)
                 if (res.code === 200) {
                 // res.data.item.wholesalePrice = (res.data.item.regionprice * 1.1).toFixed(2)
-                    for (let item of res.data.goodsSpec.goodsAttrList) {
-                        item.activeName = ''
-                    }
-                    this.getData.info = res.data
+                    // for (let item of res.data.goodsSpec.goodsAttrList) {
+                    //     item.activeName = ''
+                    // }
+                    this.getData = res.data
+                    this.data.loading = true
                     // this.data.form.goodsnumber = parseInt(this.getData.item.minimum) || 0
                 }
 
@@ -209,7 +216,7 @@ export default {
                 //         }
                 //     }
                 // }
-                console.log(this.shopAttrList)
+               
             } catch (err) {
                 if (err.code === 500) {
                     setTimeout(() => {
@@ -221,10 +228,11 @@ export default {
 
         // 添加到购物车
         async addShopCart (state) {
+            console.log(1)
             let res = await addCart({
                 goodsId: this.search.goodsId,
                 goodsNum: this.data.form.goodsNum,
-                goodsSpec: this.data.thisGoodsSpec
+                // goodsSpec: this.data.thisGoodsSpec
             })
             if (res.code === 200) {
                 wx.showToast({
@@ -310,21 +318,21 @@ export default {
                 })
                 return
             }
-            console.log(this.data.isChooseSpec)
-            if (this.getData.info.goodsSpec.goodsSkuList.length > 0 && !this.data.isChooseSpec) {
-                wx.showToast({
-                    title: '请选择规格',
-                    icon: 'none'
-                })
-                return
-            }
+            // console.log(this.data.isChooseSpec)
+            // if (this.getData.info.goodsSpec.goodsSkuList.length > 0 && !this.data.isChooseSpec) {
+            //     wx.showToast({
+            //         title: '请选择规格',
+            //         icon: 'none'
+            //     })
+            //     return
+            // }
 
-            if (!this.data.user.nickname) {
-                wx.navigateTo({
-                    url: '/pages/login/index/main'
-                })
-                return
-            }
+            // if (!this.data.user.nickname) {
+            //     wx.navigateTo({
+            //         url: '/pages/login/index/main'
+            //     })
+            //     return
+            // }
             if (this.isAddCart) {
                 this.addShopCart(0)
             } else {

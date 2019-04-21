@@ -52,12 +52,12 @@ export default {
             isOrder: false
         }
     },
-    onLoad () {
-        dataStack.push({...this.$data})
-        this.$set(this.$data, 'list', [])
-    },
+    // onLoad () {
+    //     dataStack.push({...this.$data})
+    //     this.$set(this.$data, 'list', [])
+    // },
     onShow () {
-        this.getAddressList()
+        // this.getAddressList()
     },
     mounted () {
         this.getAddressList()
@@ -70,14 +70,14 @@ export default {
         ...mapMutations(['setAddress']),
         async getAddressList () {
             let res = await getAddressList()
-            res.data.forEach((val, index) => {
-                if (val.isdefault === 2) {
-                    this.$set(val, 'visible', true)
-                } else if (val.isdefault === 1) {
-                    this.$set(val, 'visible', false)
-                }
-            })
-            this.list = res.data
+            // res.data.forEach((val, index) => {
+            //     if (val.isdefault === 2) {
+            //         this.$set(val, 'visible', true)
+            //     } else if (val.isdefault === 1) {
+            //         this.$set(val, 'visible', false)
+            //     }
+            // })
+            this.list = res.data.list
             this.loading = false
         },
 

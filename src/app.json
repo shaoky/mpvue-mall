@@ -1,0 +1,60 @@
+{
+    "pages": [
+        "pages/index/main",
+        "pages/login/index/main",
+        "pages/h5/main",
+        "pages/login/register/main",
+        "pages/login/apply/main",
+        "pages/login/forget/main",
+        "pages/logs/main",
+        "pages/goods/list/main",
+        "pages/goods/info/main",
+        "pages/goods/confirm/main",
+        "pages/goods/success/main",
+        "pages/cart/main",
+        "pages/user/index/main",
+        "pages/user/order/main",
+        "pages/user/order/info/main",
+        "pages/user/address/main",
+        "pages/user/address/add/main",
+        "pages/user/refund/main",
+        "pages/user/revisePassword/main",
+        "pages/user/refund/info/main",
+        "pages/common/region/main",
+        "pages/user/information/main"
+    ],
+    "window": {
+      "backgroundTextStyle": "dark",
+      "navigationBarBackgroundColor": "#fff",
+      "navigationBarTitleText": "甩货商城",
+      "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+      "color": "#999",
+      "backgroundColor": "#ffffff",
+      "selectedColor": "#f70044",
+  
+      "list": [{
+        "text": "首页",
+        "pagePath": "pages/index/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      }, {
+        "text": "全部",
+        "pagePath": "pages/goods/list/main",
+        "iconPath": "static/tabs/home.png",
+        "selectedIconPath": "static/tabs/home-active.png"
+      }, {
+        "text": "购物车",
+        "pagePath": "pages/cart/main",
+        "iconPath": "static/tabs/cart.png",
+        "selectedIconPath": "static/tabs/cart-active.png"
+      }, {
+        "text": "我的",
+        "pagePath": "pages/user/index/main",
+        "iconPath": "static/tabs/user.png",
+        "selectedIconPath": "static/tabs/user-active.png"
+      }],
+      "position": "bottom"
+    }
+  }

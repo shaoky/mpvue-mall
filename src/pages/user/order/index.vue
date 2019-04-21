@@ -75,7 +75,7 @@
             </div>
         </div>
         <div class="weui-loadmore" >
-            <i class="weui-loading" v-if="loading"></i>
+            <i class="weui-loading" v-if="loading && hasNext"></i>
             <span class="weui-loadmore__tips">{{bottomText}}</span>
         </div>
         <div class="slot" v-if="dialogVisible" >
@@ -133,11 +133,11 @@ export default {
             this.loading = false
             this.bottomText = '加载更多'
             console.log(res)
-            res.data.forEach((item, index) => {
+            res.data.list.forEach((item, index) => {
                 item.createTime = getTimeStr(item.createTime * 1000)
             })
-            this.list.push(...res.data)
-            if (res.data.length < this.search.size) {
+            this.list.push(...res.data.list)
+            if (res.data.list.length < this.search.size) {
                 this.hasNext = false
                 this.bottomText = '无更多数据'
             }

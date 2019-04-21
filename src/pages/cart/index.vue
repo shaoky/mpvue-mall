@@ -43,18 +43,18 @@
                         </div>
                         <div class="shop-content">
                             <div class="image" >
-                                <img :src="item.goodsInfo.goodsImage">
+                                <img :src="item.goodsImage">
                             </div>
                             <div class="info">
-                                <div class="title ov">{{item.goodsInfo.goodsName}}</div>
+                                <div class="title ov">{{item.goodsName}}</div>
                                 <div class="spec">
-                                    <span v-for="(item1, index1) in item.goodsSpec.list" :key="index1">
+                                    <!-- <span v-for="(item1, index1) in item.goodsSpec.list" :key="index1">
                                         {{item1.attr}}: {{item1.name}};
-                                    </span>
+                                    </span> -->
                                 </div>
                                 <div class="price">
                                     <div class="left" v-if="item.openSpec">￥{{item.goodsSpec.shopPrice}}</div>
-                                    <div class="left" v-if="!item.openSpec">￥{{item.goodsInfo.shopPrice}}</div>
+                                    <div class="left" v-if="!item.openSpec">￥{{item.shopPrice}}</div>
                                     <div class="num">
                                         <div class="reduce" @click.stop="shopNumEdit(item, 0)">
                                             <i class="iconfont icon-jianhao"></i>
@@ -126,9 +126,9 @@ export default {
             this.cartList.forEach(item => {
                 if (item.selected) {
                     if (item.openSpec) {
-                        count += item.goodsSpec.shopPrice * item.goodsNum
+                        count += item.shopPrice * item.goodsNum
                     } else {
-                        count += item.goodsInfo.shopPrice * item.goodsNum
+                        count += item.shopPrice * item.goodsNum
                     }
                 }
             })
@@ -166,14 +166,14 @@ export default {
         async getCartList () {
             let res = await getCartList(this.search)
             if (res.code === 200) {
-                res.data.goodsList.forEach(item => {
+                res.data.list.forEach(item => {
                     if (!item.selected) {
                         this.isCheckAll = false
                     }
                 })
                 this.freeFreightMoney = res.data.freeFreightMoney
                 this.freightMoney = res.data.freightMoney
-                this.cartList = res.data.goodsList
+                this.cartList = res.data.list
                 this.cartId = res.data.cartId
             }
         },
